@@ -274,6 +274,50 @@ class OfferingSyncControllerTest {
     assertEquals(expected, actual);
   }
 
+  @Test
+  void testGetUpstreamOfferingForOfferingWithUnlimitedSockets() {
+    // Given a marketing SKU that has unlimited number of sockets,
+    var sku = "ESA0055";
+    var expected = new Offering();
+    expected.setSku(sku);
+    expected.setChildSkus(Arrays.asList("SVCESA0055"));
+    expected.setProductIds(
+        Arrays.asList(
+            69, 70, 84, 86, 91, 92, 93, 94, 127, 133, 176, 180, 182, 201, 205, 240, 246, 271, 272,
+            273, 274, 317, 318, 394, 395, 408, 479, 491, 588, 605));
+    expected.setProductFamily("RHEL");
+    expected.setProductName("RHEL for SAP HANA");
+    expected.setServiceLevel(ServiceLevel.PREMIUM);
+
+    // When getting the upstream Offering,
+    var actual = subject.getUpstreamOffering(sku).orElseThrow();
+
+    // Then the resulting Offering has a physical sockets count of -1 to represent unlimited.
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void testGetUpstreamOfferingForOfferingWithUnlimitedCores() {
+    // Given a marketing SKU that has unlimited number of cores,
+    var sku = "ESA0052";
+    var expected = new Offering();
+    expected.setSku(sku);
+    expected.setChildSkus(Arrays.asList("SVCESA0052"));
+    expected.setProductIds(
+        Arrays.asList(
+            69, 70, 167, 180, 185, 193, 194, 197, 201, 205, 240, 271, 290, 303, 311, 317, 318, 326,
+            329, 408, 458, 473, 479, 491, 518, 519, 546, 579, 588, 603, 604, 608));
+    expected.setProductFamily("OpenShift Enterprise");
+    expected.setProductName("OpenShift Node");
+    expected.setServiceLevel(ServiceLevel.PREMIUM);
+
+    // When getting the upstream Offering,
+    var actual = subject.getUpstreamOffering(sku).orElseThrow();
+
+    // Then the resulting Offering has a phsyical cores count of -1 to represent unlimited.
+    assertEquals(expected, actual);
+  }
+
   @Test()
   void testGetUpstreamOfferingNotInAllowlist() {
     // Given a marketing SKU not listed in allowlist,

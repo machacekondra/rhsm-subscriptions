@@ -1,0 +1,65 @@
+{
+  "products": [
+    {
+      "sku": "ESA0052",
+      "description": "Red Hat OpenShift Kubernetes Engine, Premium (One Year, Enterprise Program, L3 Only)",
+      "status": "ACTIVE",
+      "attributes": [
+        {
+          "code": "SERVICE_TYPE",
+          "value": "Premium"
+        },
+        {
+          "code": "CORES",
+          "value": "Unlimited"
+        },
+        {
+          "code": "SOCKET_LIMIT",
+          "value": "0"
+        },
+        {
+          "code": "PRODUCT_FAMILY",
+          "value": "OpenShift Enterprise"
+        },
+        {
+          "code": "PRODUCT_NAME",
+          "value": "OpenShift Node"
+        }
+      ],
+      "roles": []
+    },
+    {
+      "sku": "SVCESA0052",
+      "description": "Red Hat OpenShift Kubernetes Engine, Premium (One Year, Enterprise Program, L3 Only)",
+      "status": "ACTIVE",
+      "attributes": [
+        {
+          "code": "SERVICE_TYPE",
+          "value": "Premium"
+        },
+        {
+          "code": "CORES",
+          "value": "Unlimited"
+        },
+        {
+          "code": "SOCKET_LIMIT",
+          "value": "0"
+        },
+        {
+          "code": "PRODUCT_FAMILY",
+          "value": "OpenShift Enterprise"
+        },
+        {
+          "code": "PRODUCT_NAME",
+          "value": "OpenShift Node"
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "parentMap": [
+    {
+      "child": "SVCESA0052"
+    }
+  ]
+}

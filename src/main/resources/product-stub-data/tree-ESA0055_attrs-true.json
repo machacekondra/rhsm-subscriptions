@@ -1,0 +1,57 @@
+{
+  "products": [
+    {
+      "sku": "ESA0055",
+      "description": "Red Hat Enterprise Linux for SAP Solutions, Premium (One Year, Enterprise Program)",
+      "status": "ACTIVE",
+      "attributes": [
+        {
+          "code": "PRODUCT_FAMILY",
+          "value": "RHEL"
+        },
+        {
+          "code": "SOCKET_LIMIT",
+          "value": "unlimited"
+        },
+        {
+          "code": "SERVICE_TYPE",
+          "value": "Premium"
+        },
+        {
+          "code": "PRODUCT_NAME",
+          "value": "RHEL for SAP HANA"
+        }
+      ],
+      "roles": []
+    },
+    {
+      "sku": "SVCESA0055",
+      "description": "Red Hat Enterprise Linux for SAP Solutions, Premium (One Year, Enterprise Program)",
+      "status": "ACTIVE",
+      "attributes": [
+        {
+          "code": "PRODUCT_FAMILY",
+          "value": "RHEL"
+        },
+        {
+          "code": "SOCKET_LIMIT",
+          "value": "unlimited"
+        },
+        {
+          "code": "SERVICE_TYPE",
+          "value": "Premium"
+        },
+        {
+          "code": "PRODUCT_NAME",
+          "value": "RHEL for SAP HANA"
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "parentMap": [
+    {
+      "child": "SVCESA0055"
+    }
+  ]
+}

@@ -50,6 +50,7 @@ public class MidProduct {
   private static final Logger LOGGER = LoggerFactory.getLogger(MidProduct.class);
   private static String MSG_TEMPLATE =
       "sku=\"%s\" already has field=%s original=\"%s\" so will ignore value=\"%s\".";
+  private static final String PRODUCT_ATTRIBUTE_VALUE_UNLIMITED = "UNLIMITED";
   private static final int CONVERSION_RATIO_IFL_TO_CORES = 4;
 
   /** List of opProd attribute codes used in the making of an Offering. */
@@ -269,21 +270,29 @@ public class MidProduct {
     String virtCores = attrs.get(Attr.__X_VIRTUAL_CORES);
     String virtSockets = attrs.get(Attr.__X_VIRTUAL_SOCKETS);
 
-    if (ifl == null) {
-      offering.setPhysicalCores(nullOrInteger(cores));
+    if (PRODUCT_ATTRIBUTE_VALUE_UNLIMITED.equalsIgnoreCase(cores)
+        || PRODUCT_ATTRIBUTE_VALUE_UNLIMITED.equalsIgnoreCase(sockets)
+        || PRODUCT_ATTRIBUTE_VALUE_UNLIMITED.equalsIgnoreCase(virtCores)
+        || PRODUCT_ATTRIBUTE_VALUE_UNLIMITED.equalsIgnoreCase(virtSockets)) {
+      // TODO https://issues.redhat.com/browse/ENT-3230
+      throw new UnsupportedOperationException("Not yet supported.");
     } else {
-      int numCores = Integer.parseInt(ifl) * CONVERSION_RATIO_IFL_TO_CORES;
-      offering.setPhysicalCores(numCores);
-    }
-    offering.setPhysicalSockets(nullOrInteger(sockets));
+      if (ifl == null) {
+        offering.setPhysicalCores(nullOrInteger(cores));
+      } else {
+        int numCores = Integer.parseInt(ifl) * CONVERSION_RATIO_IFL_TO_CORES;
+        offering.setPhysicalCores(numCores);
+      }
+      offering.setPhysicalSockets(nullOrInteger(sockets));
 
-    if (virtIfl == null) {
-      offering.setVirtualCores(nullOrInteger(virtCores));
-    } else {
-      int numVirtCores = Integer.parseInt(virtIfl) * CONVERSION_RATIO_IFL_TO_CORES;
-      offering.setVirtualCores(numVirtCores);
+      if (virtIfl == null) {
+        offering.setVirtualCores(nullOrInteger(virtCores));
+      } else {
+        int numVirtCores = Integer.parseInt(virtIfl) * CONVERSION_RATIO_IFL_TO_CORES;
+        offering.setVirtualCores(numVirtCores);
+      }
+      offering.setVirtualSockets(nullOrInteger(virtSockets));
     }
-    offering.setVirtualSockets(nullOrInteger(virtSockets));
   }
 
   private static Integer nullOrInteger(String v) {
