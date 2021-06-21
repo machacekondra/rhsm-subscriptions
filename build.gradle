@@ -103,6 +103,7 @@ allprojects {
 
     dependencies {
         implementation 'javax.annotation:javax.annotation-api:1.3.2'
+         implementation files('buildSrc/swatch-core-0.1.jar')
 
         compileOnly "org.projectlombok:lombok"
         annotationProcessor "org.projectlombok:lombok"

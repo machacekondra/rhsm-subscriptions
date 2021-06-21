@@ -28,6 +28,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
+import org.swatch.core.FruitSalad;
 
 /** Bootstrapper for Spring Boot. */
 @SpringBootConfiguration
@@ -44,6 +45,11 @@ public class BootApplication {
     Hibernate will return OffsetDateTime in the system timezone, while we coerce dates into UTC in
     ApplicationClock! Setting it here means the whole application deals exclusively with UTC.
      */
+
+     FruitSalad asdf = new FruitSalad();
+
+     System.err.println(asdf.isYummyYummy());
+
     TimeZone.setDefault(TimeZone.getTimeZone(ZoneOffset.UTC));
     // Force liquibase-hub to off to avoid unnecessary warnings in our logs
     System.setProperty("liquibase.hub.mode", "off");
