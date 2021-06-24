@@ -32,7 +32,7 @@ import org.candlepin.subscriptions.conduit.rhsm.client.ApiException;
 import org.candlepin.subscriptions.db.model.OrgConfigRepository;
 import org.candlepin.subscriptions.db.model.config.OrgConfig;
 import org.candlepin.subscriptions.exception.MissingAccountNumberException;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

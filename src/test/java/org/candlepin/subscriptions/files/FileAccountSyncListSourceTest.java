@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import org.candlepin.subscriptions.ApplicationProperties;
 import org.candlepin.subscriptions.tally.files.FileAccountSyncListSource;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.FileSystemResourceLoader;

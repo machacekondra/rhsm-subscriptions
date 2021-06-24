@@ -25,7 +25,7 @@ import org.candlepin.subscriptions.FixedClockConfiguration;
 import org.candlepin.subscriptions.db.TallySnapshotRepository;
 import org.candlepin.subscriptions.db.model.Granularity;
 import org.candlepin.subscriptions.files.ProductProfileRegistry;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

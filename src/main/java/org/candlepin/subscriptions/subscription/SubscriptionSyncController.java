@@ -25,7 +25,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import org.candlepin.subscriptions.db.SubscriptionRepository;
 import org.candlepin.subscriptions.subscription.api.model.Subscription;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.springframework.stereotype.Component;
 
 /** Update subscriptions from subscription service responses. */

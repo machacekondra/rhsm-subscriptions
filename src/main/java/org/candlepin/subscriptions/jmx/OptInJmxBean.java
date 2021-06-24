@@ -28,7 +28,7 @@ import org.candlepin.subscriptions.db.AccountConfigRepository;
 import org.candlepin.subscriptions.db.model.config.OptInType;
 import org.candlepin.subscriptions.resource.ResourceUtils;
 import org.candlepin.subscriptions.security.OptInController;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.candlepin.subscriptions.utilization.api.model.OptInConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

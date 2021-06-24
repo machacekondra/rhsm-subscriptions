@@ -18,7 +18,7 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.util;
+package com.redhat.swatch.core;
 
 import java.math.BigDecimal;
 import java.time.Clock;
@@ -34,6 +34,7 @@ import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
 import org.candlepin.subscriptions.db.model.Granularity;
+import org.candlepin.subscriptions.util.DateRange;
 
 /**
  * The single date and time source to be used by the application.

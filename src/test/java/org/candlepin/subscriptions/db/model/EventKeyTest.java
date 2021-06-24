@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.candlepin.subscriptions.FixedClockConfiguration;
 import org.candlepin.subscriptions.json.Event;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.junit.jupiter.api.Test;
 
 class EventKeyTest {

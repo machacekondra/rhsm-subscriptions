@@ -46,7 +46,7 @@ import org.candlepin.subscriptions.tally.job.CaptureHourlySnapshotsConfiguration
 import org.candlepin.subscriptions.tally.job.CaptureSnapshotsConfiguration;
 import org.candlepin.subscriptions.task.TaskQueueProperties;
 import org.candlepin.subscriptions.user.UserServiceClientConfiguration;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.candlepin.subscriptions.util.HawtioConfiguration;
 import org.candlepin.subscriptions.util.LiquibaseUpdateOnlyConfiguration;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -20,6 +20,7 @@
  */
 package org.candlepin.subscriptions.util;
 
+import com.redhat.swatch.core.ApplicationClock;
 import java.time.OffsetDateTime;
 import java.time.temporal.TemporalAmount;
 import org.candlepin.subscriptions.db.model.Granularity;

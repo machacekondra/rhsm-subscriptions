@@ -22,7 +22,7 @@ package org.candlepin.subscriptions.files;
 
 import java.io.InputStream;
 import org.candlepin.subscriptions.ApplicationProperties;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.FactoryBean;

@@ -24,7 +24,7 @@ import java.io.IOException;
 import javax.annotation.PostConstruct;
 import org.candlepin.subscriptions.ApplicationProperties;
 import org.candlepin.subscriptions.files.PerLineFileSource;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.springframework.context.ResourceLoaderAware;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;

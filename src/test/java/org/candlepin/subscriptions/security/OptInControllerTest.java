@@ -32,7 +32,7 @@ import org.candlepin.subscriptions.db.model.config.AccountConfig;
 import org.candlepin.subscriptions.db.model.config.OptInType;
 import org.candlepin.subscriptions.db.model.config.OrgConfig;
 import org.candlepin.subscriptions.user.AccountService;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.candlepin.subscriptions.utilization.api.model.OptInConfig;
 import org.candlepin.subscriptions.utilization.api.model.OptInConfigDataAccount;
 import org.candlepin.subscriptions.utilization.api.model.OptInConfigDataOrg;

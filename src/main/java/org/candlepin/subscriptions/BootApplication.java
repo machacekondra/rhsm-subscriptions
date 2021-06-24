@@ -43,7 +43,7 @@ public class BootApplication {
     FruitSalad fruitSalad = new FruitSalad();
     assert(fruitSalad.isYummyYummy());
     /*
-    Force the JVM to operate in UTC, see org.candlepin.subscriptions.util.ApplicationClock
+    Force the JVM to operate in UTC, see com.redhat.swatch.core.ApplicationClock
 
     Hibernate will return OffsetDateTime in the system timezone, while we coerce dates into UTC in
     ApplicationClock! Setting it here means the whole application deals exclusively with UTC.

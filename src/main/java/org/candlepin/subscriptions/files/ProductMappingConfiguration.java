@@ -21,7 +21,7 @@
 package org.candlepin.subscriptions.files;
 
 import org.candlepin.subscriptions.ApplicationProperties;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 

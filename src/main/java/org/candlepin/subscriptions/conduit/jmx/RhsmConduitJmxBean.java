@@ -30,7 +30,7 @@ import org.candlepin.subscriptions.db.model.OrgConfigRepository;
 import org.candlepin.subscriptions.db.model.config.OrgConfig;
 import org.candlepin.subscriptions.exception.MissingAccountNumberException;
 import org.candlepin.subscriptions.resource.ResourceUtils;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.candlepin.subscriptions.utilization.api.model.OrgInventory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

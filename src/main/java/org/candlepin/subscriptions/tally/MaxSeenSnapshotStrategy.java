@@ -35,7 +35,7 @@ import org.candlepin.subscriptions.tally.roller.MonthlySnapshotRoller;
 import org.candlepin.subscriptions.tally.roller.QuarterlySnapshotRoller;
 import org.candlepin.subscriptions.tally.roller.WeeklySnapshotRoller;
 import org.candlepin.subscriptions.tally.roller.YearlySnapshotRoller;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -22,6 +22,7 @@ package org.candlepin.subscriptions.util;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.redhat.swatch.core.ApplicationClock;
 import org.candlepin.subscriptions.FixedClockConfiguration;
 import org.candlepin.subscriptions.db.model.Granularity;
 import org.junit.jupiter.api.Test;

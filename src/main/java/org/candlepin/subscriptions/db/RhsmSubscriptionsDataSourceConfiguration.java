@@ -26,7 +26,7 @@ import javax.sql.DataSource;
 import org.candlepin.subscriptions.ApplicationProperties;
 import org.candlepin.subscriptions.tally.files.FileAccountSyncListSource;
 import org.candlepin.subscriptions.tally.files.ReportingAccountWhitelist;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;

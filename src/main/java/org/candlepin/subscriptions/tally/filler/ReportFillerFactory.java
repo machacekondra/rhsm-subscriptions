@@ -21,7 +21,7 @@
 package org.candlepin.subscriptions.tally.filler;
 
 import org.candlepin.subscriptions.db.model.Granularity;
-import org.candlepin.subscriptions.util.ApplicationClock;
+import com.redhat.swatch.core.ApplicationClock;
 import org.candlepin.subscriptions.util.SnapshotTimeAdjuster;
 
 /** Responsible for creating ReportFiller objects based on granularity. */
