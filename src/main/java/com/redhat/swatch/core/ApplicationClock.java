@@ -27,7 +27,6 @@ import org.candlepin.subscriptions.db.model.Granularity;
 import org.candlepin.subscriptions.util.DateRange;
 
 /** Extends CoreApplicationClock to include Granularity & DateRange specifics */
-
 @NoArgsConstructor
 public class ApplicationClock extends CoreApplicationClock {
   private static final String BAD_GRANULARITY_MESSAGE = "Unsupported granularity: %s";

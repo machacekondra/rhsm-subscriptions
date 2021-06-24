@@ -20,7 +20,7 @@
  */
 package org.candlepin.subscriptions.exception.mapper;
 
-import static org.candlepin.subscriptions.security.SecurityConfig.*;
+import static org.candlepin.subscriptions.security.SecurityConfig.SECURITY_STACKTRACE;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -43,6 +43,7 @@ public abstract class BaseExceptionMapper<T extends Throwable> implements Except
 
   @Override
   public Response toResponse(T exception) {
+
     Error error = buildError(exception);
     String message =
         StringUtils.hasText(error.getCode())
