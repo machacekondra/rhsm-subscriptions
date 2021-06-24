@@ -20,6 +20,7 @@
  */
 package org.candlepin.subscriptions;
 
+import com.redhat.swatch.core.FruitSalad;
 import java.time.ZoneOffset;
 import java.util.TimeZone;
 import org.springframework.boot.SpringApplication;
@@ -28,7 +29,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
-import org.swatch.core.FruitSalad;
 
 /** Bootstrapper for Spring Boot. */
 @SpringBootConfiguration
@@ -39,16 +39,15 @@ import org.swatch.core.FruitSalad;
 @SuppressWarnings("checkstyle:hideutilityclassconstructor")
 public class BootApplication {
   public static void main(String[] args) {
+
+    FruitSalad fruitSalad = new FruitSalad();
+    assert(fruitSalad.isYummyYummy());
     /*
     Force the JVM to operate in UTC, see org.candlepin.subscriptions.util.ApplicationClock
 
     Hibernate will return OffsetDateTime in the system timezone, while we coerce dates into UTC in
     ApplicationClock! Setting it here means the whole application deals exclusively with UTC.
      */
-
-     FruitSalad asdf = new FruitSalad();
-
-     System.err.println(asdf.isYummyYummy());
 
     TimeZone.setDefault(TimeZone.getTimeZone(ZoneOffset.UTC));
     // Force liquibase-hub to off to avoid unnecessary warnings in our logs
