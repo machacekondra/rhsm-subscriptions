@@ -20,13 +20,21 @@
  */
 package com.redhat.swatch.core;
 
+import java.time.Clock;
 import java.time.OffsetDateTime;
+import lombok.NoArgsConstructor;
 import org.candlepin.subscriptions.db.model.Granularity;
 import org.candlepin.subscriptions.util.DateRange;
 
 /** Extends CoreApplicationClock to include Granularity & DateRange specifics */
+
+@NoArgsConstructor
 public class ApplicationClock extends CoreApplicationClock {
   private static final String BAD_GRANULARITY_MESSAGE = "Unsupported granularity: %s";
+
+  public ApplicationClock(Clock clock) {
+    super(clock);
+  }
 
   public OffsetDateTime calculateStartOfRange(OffsetDateTime toAdjust, Granularity granularity) {
     switch (granularity) {

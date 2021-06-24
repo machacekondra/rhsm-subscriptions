@@ -18,12 +18,21 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.util;
+package com.redhat.swatch.core;
 
-import static org.candlepin.subscriptions.FixedClockConfiguration.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.candlepin.subscriptions.FixedClockConfiguration.SPRING_EPOCH_EDT;
+import static org.candlepin.subscriptions.FixedClockConfiguration.SPRING_EPOCH_UTC;
+import static org.candlepin.subscriptions.FixedClockConfiguration.SPRING_TIME_EDT;
+import static org.candlepin.subscriptions.FixedClockConfiguration.SPRING_TIME_UTC;
+import static org.candlepin.subscriptions.FixedClockConfiguration.WINTER_EPOCH_EST;
+import static org.candlepin.subscriptions.FixedClockConfiguration.WINTER_EPOCH_UTC;
+import static org.candlepin.subscriptions.FixedClockConfiguration.WINTER_TIME_EST;
+import static org.candlepin.subscriptions.FixedClockConfiguration.WINTER_TIME_UTC;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.redhat.swatch.core.ApplicationClock;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import org.candlepin.subscriptions.FixedClockConfiguration;
