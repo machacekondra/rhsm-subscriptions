@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 import org.candlepin.subscriptions.db.model.HardwareMeasurementType;
 import org.candlepin.subscriptions.db.model.ServiceLevel;
 import org.candlepin.subscriptions.db.model.Usage;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.files.ProductProfileRegistry;
 import org.candlepin.subscriptions.json.TallyMeasurement.Uom;
 import org.candlepin.subscriptions.json.TallySnapshot;
@@ -166,7 +166,7 @@ public class MarketplacePayloadMapper {
           idProvider.findSubscriptionId(accountNumber, orgId, usageKey, snapshotDate, snapshotDate);
 
       if (subscriptionIdOpt.isEmpty()) {
-        log.error("{}", ErrorCode.SUBSCRIPTION_SERVICE_MARKETPLACE_ID_LOOKUP_ERROR);
+        log.error("{}", CoreErrorCode.SUBSCRIPTION_SERVICE_MARKETPLACE_ID_LOOKUP_ERROR);
         continue;
       }
 

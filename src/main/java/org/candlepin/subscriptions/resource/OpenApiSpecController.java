@@ -25,7 +25,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import javax.ws.rs.core.Response;
 import org.apache.commons.io.IOUtils;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -49,7 +49,7 @@ public class OpenApiSpecController {
       return IOUtils.toString(is, StandardCharsets.UTF_8);
     } catch (IOException e) {
       throw new SubscriptionsException(
-          ErrorCode.UNHANDLED_EXCEPTION_ERROR,
+          CoreErrorCode.UNHANDLED_EXCEPTION_ERROR,
           Response.Status.INTERNAL_SERVER_ERROR,
           String.format("Unable to read %s", r.getFilename()),
           e.getMessage());

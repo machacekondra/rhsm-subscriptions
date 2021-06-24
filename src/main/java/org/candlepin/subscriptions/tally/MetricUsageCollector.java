@@ -40,7 +40,7 @@ import org.candlepin.subscriptions.db.model.HostTallyBucket;
 import org.candlepin.subscriptions.db.model.ServiceLevel;
 import org.candlepin.subscriptions.db.model.Usage;
 import org.candlepin.subscriptions.event.EventController;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
 import org.candlepin.subscriptions.files.ProductProfile;
 import org.candlepin.subscriptions.json.Event;
@@ -87,7 +87,7 @@ public class MetricUsageCollector {
             .orElseThrow(
                 () ->
                     new SubscriptionsException(
-                        ErrorCode.OPT_IN_REQUIRED,
+                        CoreErrorCode.OPT_IN_REQUIRED,
                         Response.Status.BAD_REQUEST,
                         "Account not found!",
                         String.format(

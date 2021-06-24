@@ -29,7 +29,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.candlepin.subscriptions.ApplicationProperties;
 import org.candlepin.subscriptions.db.model.Granularity;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.ExternalServiceException;
 import org.candlepin.subscriptions.util.DateRange;
 import org.candlepin.subscriptions.utilization.api.model.ProductId;
@@ -151,7 +151,7 @@ public class TallySnapshotController {
               cloudigradeCollector.enrichUsageWithCloudigradeData(accountCalcs, accounts);
             } catch (Exception e) {
               throw new ExternalServiceException(
-                  ErrorCode.REQUEST_PROCESSING_ERROR,
+                  CoreErrorCode.REQUEST_PROCESSING_ERROR,
                   "Error during attempt to integrate cloudigrade report",
                   e);
             }

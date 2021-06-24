@@ -22,7 +22,7 @@ package org.candlepin.subscriptions.exception.mapper;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.ext.Provider;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.utilization.api.model.Error;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +39,7 @@ public class WebApplicationExceptionMapper extends BaseExceptionMapper<WebApplic
   @Override
   protected Error buildError(WebApplicationException wae) {
     return new Error()
-        .code(ErrorCode.REQUEST_PROCESSING_ERROR.getCode())
+        .code(CoreErrorCode.REQUEST_PROCESSING_ERROR.getCode())
         .status(String.valueOf(wae.getResponse().getStatus()))
         .title(ERROR_TITLE)
         .detail(wae.getMessage());

@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.ExceptionUtil;
 import org.candlepin.subscriptions.utilization.api.model.Error;
 import org.slf4j.Logger;
@@ -70,7 +70,7 @@ public class IdentityHeaderAuthenticationFailureHandler implements Authenticatio
 
   protected Error buildError(AuthenticationException exception) {
     return new Error()
-        .code(ErrorCode.REQUEST_PROCESSING_ERROR.getCode())
+        .code(CoreErrorCode.REQUEST_PROCESSING_ERROR.getCode())
         .status(String.valueOf(Status.UNAUTHORIZED.getStatusCode()))
         .title("Could not authenticate the user.")
         .detail(exception.getMessage());

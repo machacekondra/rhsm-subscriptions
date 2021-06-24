@@ -24,7 +24,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
 import org.candlepin.subscriptions.utilization.api.model.TallyReportLinks;
 import org.springframework.data.domain.Page;
@@ -73,7 +73,7 @@ public class PageLinkCreator {
       return String.format("/%s", serverUri.relativize(uri).toString());
     } catch (URISyntaxException e) {
       throw new SubscriptionsException(
-          ErrorCode.REQUEST_PROCESSING_ERROR,
+          CoreErrorCode.REQUEST_PROCESSING_ERROR,
           Response.Status.INTERNAL_SERVER_ERROR,
           "Unable to format URI",
           e);

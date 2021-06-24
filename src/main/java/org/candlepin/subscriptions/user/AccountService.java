@@ -22,7 +22,7 @@ package org.candlepin.subscriptions.user;
 
 import java.util.Optional;
 import javax.ws.rs.core.Response;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
 import org.candlepin.subscriptions.user.api.model.AccountCriteria;
 import org.candlepin.subscriptions.user.api.model.AccountSearch;
@@ -59,14 +59,14 @@ public class AccountService {
           .orElseThrow(
               () ->
                   new SubscriptionsException(
-                      ErrorCode.REQUEST_PROCESSING_ERROR,
+                      CoreErrorCode.REQUEST_PROCESSING_ERROR,
                       Response.Status.INTERNAL_SERVER_ERROR,
                       String.format("Account number %s not found", accountNumber),
                       (String) null))
           .getId();
     } catch (ApiException e) {
       throw new SubscriptionsException(
-          ErrorCode.REQUEST_PROCESSING_ERROR,
+          CoreErrorCode.REQUEST_PROCESSING_ERROR,
           Response.Status.INTERNAL_SERVER_ERROR,
           "Error looking up orgId",
           e);
@@ -86,7 +86,7 @@ public class AccountService {
                   .orElseThrow(
                       () ->
                           new SubscriptionsException(
-                              ErrorCode.REQUEST_PROCESSING_ERROR,
+                              CoreErrorCode.REQUEST_PROCESSING_ERROR,
                               Response.Status.INTERNAL_SERVER_ERROR,
                               String.format("Account w/ orgId %s not found", orgId),
                               (String) null))
@@ -94,13 +94,13 @@ public class AccountService {
           .orElseThrow(
               () ->
                   new SubscriptionsException(
-                      ErrorCode.REQUEST_PROCESSING_ERROR,
+                      CoreErrorCode.REQUEST_PROCESSING_ERROR,
                       Response.Status.INTERNAL_SERVER_ERROR,
                       String.format("Account w/ orgId %s has no account number", orgId),
                       (String) null));
     } catch (ApiException e) {
       throw new SubscriptionsException(
-          ErrorCode.REQUEST_PROCESSING_ERROR,
+          CoreErrorCode.REQUEST_PROCESSING_ERROR,
           Response.Status.INTERNAL_SERVER_ERROR,
           "Error looking up account number",
           e);

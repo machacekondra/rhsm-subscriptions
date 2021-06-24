@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.ExceptionUtil;
 import org.candlepin.subscriptions.exception.OptInRequiredException;
 import org.candlepin.subscriptions.exception.mapper.AccessDeniedExceptionMapper;
@@ -85,7 +85,7 @@ public class RestAccessDeniedHandler implements AccessDeniedHandler {
     }
 
     return new Error()
-        .code(ErrorCode.REQUEST_DENIED_ERROR.getCode())
+        .code(CoreErrorCode.REQUEST_DENIED_ERROR.getCode())
         .status(String.valueOf(Status.FORBIDDEN.getStatusCode()))
         .title("Access Denied")
         .detail(exception.getMessage());

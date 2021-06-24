@@ -30,7 +30,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.ws.rs.core.Response;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
 import org.candlepin.subscriptions.marketplace.api.model.BatchStatus;
 import org.candlepin.subscriptions.marketplace.api.model.StatusResponse;
@@ -130,7 +130,7 @@ public class MarketplaceProducer {
       return status;
     } catch (ApiException e) {
       throw new SubscriptionsException(
-          ErrorCode.REQUEST_PROCESSING_ERROR,
+          CoreErrorCode.REQUEST_PROCESSING_ERROR,
           Response.Status.fromStatusCode(e.getCode()),
           "Exception checking usage batch in Marketplace",
           e);
@@ -161,7 +161,7 @@ public class MarketplaceProducer {
     // handle checked exceptions here, so that submitUsageRequest can be easily used in lambdas etc.
     catch (ApiException e) {
       throw new SubscriptionsException(
-          ErrorCode.REQUEST_PROCESSING_ERROR,
+          CoreErrorCode.REQUEST_PROCESSING_ERROR,
           Response.Status.fromStatusCode(e.getCode()),
           "Exception submitting usage record to Marketplace",
           e);

@@ -20,13 +20,13 @@
  */
 package org.candlepin.subscriptions.exception.inventory;
 
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.ExternalServiceException;
 
 /** Thrown when the inventory service is unavailable. */
 public class InventoryServiceUnavailableException extends ExternalServiceException {
 
   public InventoryServiceUnavailableException(String message, Throwable e) {
-    super(ErrorCode.INVENTORY_SERVICE_UNAVAILABLE, message, e);
+    super(CoreErrorCode.INVENTORY_SERVICE_UNAVAILABLE, message, e);
   }
 }

@@ -25,7 +25,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.ExternalServiceException;
 import org.candlepin.subscriptions.subscription.api.model.Subscription;
 import org.candlepin.subscriptions.subscription.api.resources.SearchApi;
@@ -64,7 +64,7 @@ public class SubscriptionService {
             return searchApi.getSubscriptionById(id);
           } catch (ApiException e) {
             throw new ExternalServiceException(
-                ErrorCode.REQUEST_PROCESSING_ERROR,
+                CoreErrorCode.REQUEST_PROCESSING_ERROR,
                 ERROR_DURING_ATTEMPT_TO_REQUEST_SUBSCRIPTION_INFO_MSG,
                 e);
           }
@@ -117,7 +117,7 @@ public class SubscriptionService {
             return searchApi.searchSubscriptionsByAccountNumber(accountNumber, index, pageSize);
           } catch (ApiException e) {
             throw new ExternalServiceException(
-                ErrorCode.REQUEST_PROCESSING_ERROR,
+                CoreErrorCode.REQUEST_PROCESSING_ERROR,
                 ERROR_DURING_ATTEMPT_TO_REQUEST_SUBSCRIPTION_INFO_MSG,
                 e);
           }
@@ -159,7 +159,7 @@ public class SubscriptionService {
             return searchApi.searchSubscriptionsByOrgId(orgId, index, pageSize);
           } catch (ApiException e) {
             throw new ExternalServiceException(
-                ErrorCode.REQUEST_PROCESSING_ERROR,
+                CoreErrorCode.REQUEST_PROCESSING_ERROR,
                 ERROR_DURING_ATTEMPT_TO_REQUEST_SUBSCRIPTION_INFO_MSG,
                 e);
           }

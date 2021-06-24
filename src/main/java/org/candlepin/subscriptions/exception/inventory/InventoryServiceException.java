@@ -20,13 +20,13 @@
  */
 package org.candlepin.subscriptions.exception.inventory;
 
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.ExternalServiceException;
 
 /** A general exception thrown when an uncaught error is encountered from the inventory service. */
 public class InventoryServiceException extends ExternalServiceException {
 
   public InventoryServiceException(String message, Throwable e) {
-    super(ErrorCode.INVENTORY_SERVICE_ERROR, message, e);
+    super(CoreErrorCode.INVENTORY_SERVICE_ERROR, message, e);
   }
 }

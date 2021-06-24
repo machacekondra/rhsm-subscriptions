@@ -28,7 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javax.ws.rs.core.Response;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
 import org.candlepin.subscriptions.task.TaskDescriptor;
 import org.candlepin.subscriptions.task.queue.TaskQueue;
@@ -63,7 +63,7 @@ public class ExecutorTaskQueue implements TaskQueue {
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       throw new SubscriptionsException(
-          ErrorCode.UNHANDLED_EXCEPTION_ERROR,
+          CoreErrorCode.UNHANDLED_EXCEPTION_ERROR,
           Response.Status.INTERNAL_SERVER_ERROR,
           "Interrupted while trying to queue a task.",
           e);

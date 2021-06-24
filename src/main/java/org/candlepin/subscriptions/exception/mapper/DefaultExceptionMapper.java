@@ -22,7 +22,7 @@ package org.candlepin.subscriptions.exception.mapper;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.utilization.api.model.Error;
 import org.springframework.stereotype.Component;
 
@@ -38,7 +38,7 @@ public class DefaultExceptionMapper extends BaseExceptionMapper<Throwable> {
   @Override
   protected Error buildError(Throwable exception) {
     return new Error()
-        .code(ErrorCode.UNHANDLED_EXCEPTION_ERROR.getCode())
+        .code(CoreErrorCode.UNHANDLED_EXCEPTION_ERROR.getCode())
         .status(String.valueOf(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()))
         .title("An internal server error has occurred. Check the server logs for further details.")
         .detail(exception.getMessage());

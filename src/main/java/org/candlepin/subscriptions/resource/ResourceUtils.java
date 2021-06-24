@@ -26,7 +26,7 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.core.Response;
 import org.candlepin.subscriptions.db.model.ServiceLevel;
 import org.candlepin.subscriptions.db.model.Usage;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
 import org.candlepin.subscriptions.security.IdentityHeaderAuthenticationFilter;
 import org.candlepin.subscriptions.security.InsightsUserPrincipal;
@@ -129,7 +129,7 @@ public class ResourceUtils {
 
     if (offset % limit != 0) {
       throw new SubscriptionsException(
-          ErrorCode.VALIDATION_FAILED_ERROR,
+          CoreErrorCode.VALIDATION_FAILED_ERROR,
           Response.Status.BAD_REQUEST,
           "Offset must be divisible by limit",
           "Arbitrary offsets are not currently supported by this API");

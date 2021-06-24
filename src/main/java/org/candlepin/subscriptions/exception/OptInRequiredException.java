@@ -20,6 +20,7 @@
  */
 package org.candlepin.subscriptions.exception;
 
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import javax.ws.rs.core.Response.Status;
 import org.candlepin.subscriptions.utilization.api.model.Error;
 import org.springframework.security.access.AccessDeniedException;
@@ -35,7 +36,7 @@ public class OptInRequiredException extends AccessDeniedException {
 
   public Error getError() {
     return new Error()
-        .code(ErrorCode.OPT_IN_REQUIRED.getCode())
+        .code(CoreErrorCode.OPT_IN_REQUIRED.getCode())
         .status(String.valueOf(Status.FORBIDDEN.getStatusCode()))
         .title("Access Denied")
         .detail(this.getMessage());

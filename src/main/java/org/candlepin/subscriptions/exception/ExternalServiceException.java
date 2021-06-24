@@ -20,6 +20,7 @@
  */
 package org.candlepin.subscriptions.exception;
 
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import javax.ws.rs.core.Response.Status;
 
 /**
@@ -28,7 +29,7 @@ import javax.ws.rs.core.Response.Status;
  */
 public class ExternalServiceException extends SubscriptionsException {
 
-  public ExternalServiceException(ErrorCode code, String message, Throwable e) {
+  public ExternalServiceException(CoreErrorCode code, String message, Throwable e) {
     super(code, Status.INTERNAL_SERVER_ERROR, message, e);
   }
 }

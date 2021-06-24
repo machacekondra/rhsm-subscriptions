@@ -22,7 +22,7 @@ package org.candlepin.subscriptions.metering.service.prometheus;
 
 import com.google.common.net.UrlEscapers;
 import java.time.OffsetDateTime;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.ExternalServiceException;
 import org.candlepin.subscriptions.prometheus.ApiException;
 import org.candlepin.subscriptions.prometheus.api.ApiProvider;
@@ -63,7 +63,7 @@ public class PrometheusService {
       // ApiException message returned from prometheus server are huge and include the
       // HTML error page body. Just output the code here.
       throw new ExternalServiceException(
-          ErrorCode.REQUEST_PROCESSING_ERROR,
+          CoreErrorCode.REQUEST_PROCESSING_ERROR,
           String.format("Prometheus API Error! CODE: %s", apie.getCode()),
           new ApiException(String.format("Prometheus API response code: %s", apie.getCode())));
     }
@@ -80,7 +80,7 @@ public class PrometheusService {
       // ApiException message returned from prometheus server are huge and include the
       // HTML error page body. Just output the code here.
       throw new ExternalServiceException(
-          ErrorCode.REQUEST_PROCESSING_ERROR,
+          CoreErrorCode.REQUEST_PROCESSING_ERROR,
           String.format("Prometheus API Error! CODE: %s", apie.getCode()),
           new ApiException(String.format("Prometheus API response code: %s", apie.getCode())));
     }

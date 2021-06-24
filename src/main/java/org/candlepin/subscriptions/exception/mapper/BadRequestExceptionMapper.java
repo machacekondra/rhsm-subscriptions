@@ -22,7 +22,7 @@ package org.candlepin.subscriptions.exception.mapper;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.utilization.api.model.Error;
 import org.jboss.resteasy.spi.BadRequestException;
 import org.springframework.stereotype.Component;
@@ -34,7 +34,7 @@ public class BadRequestExceptionMapper extends BaseExceptionMapper<BadRequestExc
   @Override
   protected Error buildError(BadRequestException exception) {
     return new Error()
-        .code(ErrorCode.VALIDATION_FAILED_ERROR.getCode())
+        .code(CoreErrorCode.VALIDATION_FAILED_ERROR.getCode())
         .status(String.valueOf(Response.Status.BAD_REQUEST.getStatusCode()))
         .title("Bad Request")
         .detail(exception.getCause().getMessage());

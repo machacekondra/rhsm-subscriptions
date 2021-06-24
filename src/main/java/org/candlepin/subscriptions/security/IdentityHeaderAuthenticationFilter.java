@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.Base64;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,7 +75,7 @@ public class IdentityHeaderAuthenticationFilter extends AbstractPreAuthenticated
     RhIdentity.Identity identity = mapper.readValue(decodedHeader, RhIdentity.class).getIdentity();
     if (identity == null) {
       throw new SubscriptionsException(
-          ErrorCode.REQUEST_PROCESSING_ERROR,
+          CoreErrorCode.REQUEST_PROCESSING_ERROR,
           Response.Status.BAD_REQUEST,
           RH_IDENTITY_HEADER + " parsed, but invalid.",
           RH_IDENTITY_HEADER + " was missing identity.");

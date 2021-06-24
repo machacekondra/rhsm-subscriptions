@@ -18,7 +18,7 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.exception;
+package com.redhat.swatch.core.exception;
 
 /**
  * Represents the various application codes.
@@ -26,7 +26,7 @@ package org.candlepin.subscriptions.exception;
  * <p>SUBSCRIPTIONS1XXX: General application error code space. SUBSCRIPTIONS2XXX: Insights Inventory
  * API related application error code space.
  */
-public enum ErrorCode {
+public enum CoreErrorCode {
 
   /**
    * An unhandled exception has occurred. This typically implies that the exception was unexpected
@@ -75,7 +75,7 @@ public enum ErrorCode {
   private String code;
   private String description;
 
-  ErrorCode(int intCode, String description) {
+  CoreErrorCode(int intCode, String description) {
     this.code = CODE_PREFIX + intCode;
     this.description = description;
   }

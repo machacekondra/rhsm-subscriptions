@@ -23,7 +23,7 @@ package org.candlepin.subscriptions.exception.mapper;
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
-import org.candlepin.subscriptions.exception.ErrorCode;
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.utilization.api.model.Error;
 import org.springframework.stereotype.Component;
 
@@ -32,12 +32,12 @@ import org.springframework.stereotype.Component;
 @Provider
 public class ConstraintViolationExceptionMapper
     extends BaseExceptionMapper<ConstraintViolationException> {
-  public static final String ERROR_TITLE = ErrorCode.VALIDATION_FAILED_ERROR.getDescription();
+  public static final String ERROR_TITLE = CoreErrorCode.VALIDATION_FAILED_ERROR.getDescription();
 
   @Override
   protected Error buildError(ConstraintViolationException exception) {
     return new Error()
-        .code(ErrorCode.VALIDATION_FAILED_ERROR.getCode())
+        .code(CoreErrorCode.VALIDATION_FAILED_ERROR.getCode())
         .status(String.valueOf(Status.BAD_REQUEST.getStatusCode()))
         .title(ERROR_TITLE)
         .detail(exception.getMessage());

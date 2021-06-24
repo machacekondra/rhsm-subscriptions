@@ -20,6 +20,7 @@
  */
 package org.candlepin.subscriptions.exception;
 
+import com.redhat.swatch.core.exception.CoreErrorCode;
 import javax.ws.rs.core.Response.Status;
 import org.candlepin.subscriptions.utilization.api.model.Error;
 
@@ -31,25 +32,25 @@ public class SubscriptionsException extends RuntimeException {
 
   private Status status;
   private String detail;
-  private ErrorCode code;
+  private CoreErrorCode code;
 
-  public SubscriptionsException(ErrorCode code, Status status, String message, String detail) {
+  public SubscriptionsException(CoreErrorCode code, Status status, String message, String detail) {
     this(code, status, message, detail, null);
   }
 
-  public SubscriptionsException(ErrorCode code, Status status, String message, Throwable e) {
+  public SubscriptionsException(CoreErrorCode code, Status status, String message, Throwable e) {
     this(code, status, message, e.getMessage(), e);
   }
 
   public SubscriptionsException(
-      ErrorCode code, Status status, String message, String detail, Throwable e) {
+      CoreErrorCode code, Status status, String message, String detail, Throwable e) {
     super(message, e);
     this.code = code;
     this.status = status;
     this.detail = detail;
   }
 
-  public ErrorCode getCode() {
+  public CoreErrorCode getCode() {
     return this.code;
   }
 
