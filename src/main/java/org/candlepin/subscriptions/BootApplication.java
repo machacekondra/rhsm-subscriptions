@@ -20,7 +20,6 @@
  */
 package org.candlepin.subscriptions;
 
-import com.redhat.swatch.core.FruitSalad;
 import java.time.ZoneOffset;
 import java.util.TimeZone;
 import org.springframework.boot.SpringApplication;
@@ -39,9 +38,6 @@ import org.springframework.context.annotation.Import;
 @SuppressWarnings("checkstyle:hideutilityclassconstructor")
 public class BootApplication {
   public static void main(String[] args) {
-
-    FruitSalad fruitSalad = new FruitSalad();
-    assert(fruitSalad.isYummyYummy());
     /*
     Force the JVM to operate in UTC, see com.redhat.swatch.core.ApplicationClock
 
