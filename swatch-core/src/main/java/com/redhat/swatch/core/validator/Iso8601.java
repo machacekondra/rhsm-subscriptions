@@ -18,35 +18,43 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.validator;
+package com.redhat.swatch.core.validator;
 
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.*;
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE_USE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Documented;
+import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import com.redhat.swatch.core.validator.Iso8601.List;
 
-/**
- * Cross-parameter constraint to verify that two String fields are a) ISO 8601 timestamps and b) the
- * difference between those two times is less than a given Duration.
- */
-@Target({METHOD, CONSTRUCTOR, ANNOTATION_TYPE})
+/** JSR-380 validation for ensuring that a value is in a particular ISO 8601 format. */
+@Target({FIELD, PARAMETER, ANNOTATION_TYPE, TYPE_USE})
 @Retention(RUNTIME)
+@Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = {ParameterDurationValidator.class})
-public @interface ParameterDuration {
+@Constraint(validatedBy = {Iso8601Validator.class})
+public @interface Iso8601 {
   String message() default
-      "The start time, {begin}, can not be more than {duration} hours from the end"
-          + " time, {end}";
+      "The string \"${validatedValue}\" must be in ISO 8601 format similar to " + "{example}.";
 
   Class<?>[] groups() default {};
 
   Class<? extends Payload>[] payload() default {};
 
-  String value();
+  Iso8601Format value() default Iso8601Format.ISO_DATE_TIME;
 
-  Iso8601Format format() default Iso8601Format.ISO_OFFSET_DATE_TIME;
+  /** Inner annotation to support annotating type arguments of parameterized types. */
+  @Target({FIELD, TYPE_USE})
+  @Retention(RUNTIME)
+  @Documented
+  @interface List {
+    Iso8601[] value();
+  }
 }

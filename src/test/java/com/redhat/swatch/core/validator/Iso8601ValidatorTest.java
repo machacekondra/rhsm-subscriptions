@@ -18,9 +18,9 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.validator;
+package com.redhat.swatch.core.validator;
 
-import static org.candlepin.subscriptions.validator.Iso8601Format.*;
+import static com.redhat.swatch.core.validator.Iso8601Format.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

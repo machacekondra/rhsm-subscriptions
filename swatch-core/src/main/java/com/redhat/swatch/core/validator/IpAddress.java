@@ -18,10 +18,11 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.validator;
+package com.redhat.swatch.core.validator;
 
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.*;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.TYPE_USE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
@@ -29,29 +30,36 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import org.candlepin.subscriptions.validator.Iso8601.List;
+import com.redhat.swatch.core.validator.IpAddress.List;
 
-/** JSR-380 validation for ensuring that a value is in a particular ISO 8601 format. */
-@Target({FIELD, PARAMETER, ANNOTATION_TYPE, TYPE_USE})
+/**
+ * Marks a field as needing V4/V6 IP validation. The annotation can be used on a String field or on
+ * a String typed collection.
+ *
+ * <pre>
+ * {@literal @}IpAddress
+ * private String ip;
+ *
+ * private List&lt;IpAddress String&gt; ipAddresses
+ * </pre>
+ */
+@Target({FIELD, TYPE_USE})
 @Retention(RUNTIME)
 @Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = {Iso8601Validator.class})
-public @interface Iso8601 {
-  String message() default
-      "The string \"${validatedValue}\" must be in ISO 8601 format similar to " + "{example}.";
+@Constraint(validatedBy = {IpAddressValidator.class})
+public @interface IpAddress {
+  String message() default "Must be a valid IP address.";
 
   Class<?>[] groups() default {};
 
   Class<? extends Payload>[] payload() default {};
-
-  Iso8601Format value() default Iso8601Format.ISO_DATE_TIME;
 
   /** Inner annotation to support annotating type arguments of parameterized types. */
   @Target({FIELD, TYPE_USE})
   @Retention(RUNTIME)
   @Documented
   @interface List {
-    Iso8601[] value();
+    IpAddress[] value();
   }
 }

@@ -18,48 +18,37 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.validator;
+package com.redhat.swatch.core.validator;
 
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.TYPE_USE;
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Documented;
-import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import org.candlepin.subscriptions.validator.IpAddress.List;
 
 /**
- * Marks a field as needing V4/V6 IP validation. The annotation can be used on a String field or on
- * a String typed collection.
- *
- * <pre>
- * {@literal @}IpAddress
- * private String ip;
- *
- * private List&lt;IpAddress String&gt; ipAddresses
- * </pre>
+ * Cross-parameter constraint to verify that two String fields are a) ISO 8601 timestamps and b) the
+ * difference between those two times is less than a given Duration.
  */
-@Target({FIELD, TYPE_USE})
+@Target({METHOD, CONSTRUCTOR, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Repeatable(List.class)
 @Documented
-@Constraint(validatedBy = {IpAddressValidator.class})
-public @interface IpAddress {
-  String message() default "Must be a valid IP address.";
+@Constraint(validatedBy = {ParameterDurationValidator.class})
+public @interface ParameterDuration {
+  String message() default
+      "The start time, {begin}, can not be more than {duration} hours from the end"
+          + " time, {end}";
 
   Class<?>[] groups() default {};
 
   Class<? extends Payload>[] payload() default {};
 
-  /** Inner annotation to support annotating type arguments of parameterized types. */
-  @Target({FIELD, TYPE_USE})
-  @Retention(RUNTIME)
-  @Documented
-  @interface List {
-    IpAddress[] value();
-  }
+  String value();
+
+  Iso8601Format format() default Iso8601Format.ISO_OFFSET_DATE_TIME;
 }

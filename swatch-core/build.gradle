@@ -9,7 +9,10 @@ repositories {
 }
 
 dependencies {
-    compile 'org.junit.jupiter:junit-jupiter:5.7.2'
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+    implementation "org.hibernate.validator:hibernate-validator"
+    implementation "javax.validation:validation-api"
+    implementation 'org.springframework.boot:spring-boot-starter:2.5.0'
 }
 
 group = 'com.redhat'

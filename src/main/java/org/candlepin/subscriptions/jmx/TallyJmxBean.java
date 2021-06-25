@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
 import org.candlepin.subscriptions.resource.ResourceUtils;
 import org.candlepin.subscriptions.tally.job.CaptureSnapshotsTaskManager;
 import org.candlepin.subscriptions.util.DateRange;
-import org.candlepin.subscriptions.validator.ParameterDuration;
+import com.redhat.swatch.core.validator.ParameterDuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jmx.export.annotation.ManagedOperation;

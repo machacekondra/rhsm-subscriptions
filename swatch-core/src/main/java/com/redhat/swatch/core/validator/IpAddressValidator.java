@@ -18,7 +18,7 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.validator;
+package com.redhat.swatch.core.validator;
 
 import com.google.common.net.InetAddresses;
 import javax.validation.ConstraintValidator;
@@ -26,7 +26,6 @@ import javax.validation.ConstraintValidatorContext;
 
 /** A ConstraintValidator that ensures that an IP is a valid IPV4 or IPV6 IP. */
 public class IpAddressValidator implements ConstraintValidator<IpAddress, String> {
-
   @Override
   public void initialize(IpAddress constraintAnnotation) {
     /* intentionally empty */

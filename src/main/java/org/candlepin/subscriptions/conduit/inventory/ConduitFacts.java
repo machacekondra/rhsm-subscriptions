@@ -26,7 +26,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import org.candlepin.subscriptions.utilization.api.model.ConsumerInventory;
-import org.candlepin.subscriptions.validator.IpAddress;
+import com.redhat.swatch.core.validator.IpAddress;
 import org.hibernate.validator.constraints.Length;
 
 /** POJO that validates all facts scoped for collection by the conduit. */

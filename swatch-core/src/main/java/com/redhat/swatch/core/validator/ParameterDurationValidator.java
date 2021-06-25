@@ -18,7 +18,7 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.validator;
+package com.redhat.swatch.core.validator;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -59,6 +59,70 @@ public class ParameterDurationValidator
   private BeanFactory beanFactory;
   private Duration maxDuration;
   private Iso8601Format format;
+
+  /**
+   * Take two parameters, parse them according to the formatter given by an {@link Iso8601Format}
+   * parameter and return the duration between them.
+   *
+   * <p>Not all {@link Iso8601Format}'s are supported. Specifically, formats like ISO_OFFSET_DATE,
+   * ISO_DATE, ISO_TIME, and ISO_DATE_TIME. In the case of ISO_TIME, ISO_DATE, and ISO_DATE_TIME
+   * those formats have optional components that make comparison difficult. For example,
+   * "10:15-01:00" and "12:45" are both valid ISO_TIME formats, but comparing the two is meaningless
+   * since one has an offset and the other does not. ISO_OFFSET_DATE is a rather odd format in that
+   * it is not actually part of the ISO 8601 standard! It is also problematic for comparisons so it
+   * is not supported here.
+   *
+   * <p>A note on using date only format: the duration between those two dates will be calculated
+   * from midnight on each day. This will not take into account any changes around Daylight Saving
+   * Time.
+   *
+   * @param beginText a String parseable by the DateTimeFormatter given with the format parameter
+   * @param endText a String parseable by the DateTimeFormatter given with the format parameter
+   * @param format a value of Iso8601Format with an associated DateTimeFormatter
+   * @throws DateTimeParseException if the beginText or endText cannot be parsed by the method
+   * @return the Duration between beginText and endText
+   */
+  protected static Duration findDuration(String beginText, String endText, Iso8601Format format) {
+    DateTimeFormatter formatter = format.formatter;
+    TemporalQuery<Temporal> query;
+    switch (format) {
+      case ISO_LOCAL_DATE_TIME:
+        query = LocalDateTime::from;
+        break;
+      case ISO_OFFSET_DATE_TIME:
+        query = OffsetDateTime::from;
+        break;
+      case ISO_ZONED_DATE_TIME:
+        query = ZonedDateTime::from;
+        break;
+      case ISO_INSTANT:
+        query = Instant::from;
+        break;
+      case ISO_LOCAL_TIME:
+        query = LocalTime::from;
+        break;
+      case ISO_OFFSET_TIME:
+        query = OffsetTime::from;
+        break;
+      case ISO_LOCAL_DATE:
+        query = LocalDateTime::from;
+        formatter =
+            new DateTimeFormatterBuilder()
+                // date and offset
+                .append(DateTimeFormatter.ISO_LOCAL_DATE)
+                // default values for hour and minute
+                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+                .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+                .toFormatter();
+        break;
+      default:
+        throw new IllegalArgumentException("Unsupported ISO 8601 format: " + format);
+    }
+
+    Temporal begin = formatter.parse(beginText, query);
+    Temporal end = formatter.parse(endText, query);
+    return Duration.between(begin, end);
+  }
 
   /**
    * Initialize this instance. See {@link ParameterDurationValidator#findDuration(String, String,
@@ -141,70 +205,6 @@ public class ParameterDurationValidator
     }
 
     return maxDuration.compareTo(actual) >= 0;
-  }
-
-  /**
-   * Take two parameters, parse them according to the formatter given by an {@link Iso8601Format}
-   * parameter and return the duration between them.
-   *
-   * <p>Not all {@link Iso8601Format}'s are supported. Specifically, formats like ISO_OFFSET_DATE,
-   * ISO_DATE, ISO_TIME, and ISO_DATE_TIME. In the case of ISO_TIME, ISO_DATE, and ISO_DATE_TIME
-   * those formats have optional components that make comparison difficult. For example,
-   * "10:15-01:00" and "12:45" are both valid ISO_TIME formats, but comparing the two is meaningless
-   * since one has an offset and the other does not. ISO_OFFSET_DATE is a rather odd format in that
-   * it is not actually part of the ISO 8601 standard! It is also problematic for comparisons so it
-   * is not supported here.
-   *
-   * <p>A note on using date only format: the duration between those two dates will be calculated
-   * from midnight on each day. This will not take into account any changes around Daylight Saving
-   * Time.
-   *
-   * @param beginText a String parseable by the DateTimeFormatter given with the format parameter
-   * @param endText a String parseable by the DateTimeFormatter given with the format parameter
-   * @param format a value of Iso8601Format with an associated DateTimeFormatter
-   * @throws DateTimeParseException if the beginText or endText cannot be parsed by the method
-   * @return the Duration between beginText and endText
-   */
-  protected static Duration findDuration(String beginText, String endText, Iso8601Format format) {
-    DateTimeFormatter formatter = format.formatter;
-    TemporalQuery<Temporal> query;
-    switch (format) {
-      case ISO_LOCAL_DATE_TIME:
-        query = LocalDateTime::from;
-        break;
-      case ISO_OFFSET_DATE_TIME:
-        query = OffsetDateTime::from;
-        break;
-      case ISO_ZONED_DATE_TIME:
-        query = ZonedDateTime::from;
-        break;
-      case ISO_INSTANT:
-        query = Instant::from;
-        break;
-      case ISO_LOCAL_TIME:
-        query = LocalTime::from;
-        break;
-      case ISO_OFFSET_TIME:
-        query = OffsetTime::from;
-        break;
-      case ISO_LOCAL_DATE:
-        query = LocalDateTime::from;
-        formatter =
-            new DateTimeFormatterBuilder()
-                // date and offset
-                .append(DateTimeFormatter.ISO_LOCAL_DATE)
-                // default values for hour and minute
-                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
-                .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
-                .toFormatter();
-        break;
-      default:
-        throw new IllegalArgumentException("Unsupported ISO 8601 format: " + format);
-    }
-
-    Temporal begin = formatter.parse(beginText, query);
-    Temporal end = formatter.parse(endText, query);
-    return Duration.between(begin, end);
   }
 
   @Override

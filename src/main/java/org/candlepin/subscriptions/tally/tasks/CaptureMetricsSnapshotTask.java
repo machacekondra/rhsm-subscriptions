@@ -23,7 +23,7 @@ package org.candlepin.subscriptions.tally.tasks;
 import org.candlepin.subscriptions.tally.TallySnapshotController;
 import org.candlepin.subscriptions.task.Task;
 import org.candlepin.subscriptions.util.DateRange;
-import org.candlepin.subscriptions.validator.ParameterDuration;
+import com.redhat.swatch.core.validator.ParameterDuration;
 import org.springframework.validation.annotation.Validated;
 
 /** Captures hourly metrics between a given timeframe for a given account */
