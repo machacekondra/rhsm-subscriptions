@@ -39,7 +39,7 @@ import org.candlepin.subscriptions.db.model.TallyHostView;
 import org.candlepin.subscriptions.db.model.Usage;
 import org.candlepin.subscriptions.json.Measurement;
 import org.candlepin.subscriptions.resteasy.PageLinkCreator;
-import org.candlepin.subscriptions.security.WithMockRedHatPrincipal;
+import com.redhat.swatch.core.security.auth.security.WithMockRedHatPrincipal;
 import org.candlepin.subscriptions.tally.AccountListSourceException;
 import com.redhat.swatch.core.ApplicationClock;
 import org.candlepin.subscriptions.utilization.api.model.HostReport;

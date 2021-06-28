@@ -38,7 +38,7 @@ import org.candlepin.subscriptions.db.model.ServiceLevel;
 import org.candlepin.subscriptions.db.model.TallyHostView;
 import org.candlepin.subscriptions.db.model.Usage;
 import org.candlepin.subscriptions.resteasy.PageLinkCreator;
-import org.candlepin.subscriptions.security.auth.ReportingAccessRequired;
+import com.redhat.swatch.core.security.auth.security.auth.ReportingAccessRequired;
 import org.candlepin.subscriptions.utilization.api.model.HostReport;
 import org.candlepin.subscriptions.utilization.api.model.HostReportMeta;
 import org.candlepin.subscriptions.utilization.api.model.HostReportSort;

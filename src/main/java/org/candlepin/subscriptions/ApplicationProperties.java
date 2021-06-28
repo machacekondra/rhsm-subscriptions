@@ -24,7 +24,7 @@ import java.time.Duration;
 import lombok.Getter;
 import lombok.Setter;
 import org.candlepin.subscriptions.jobs.JobProperties;
-import org.candlepin.subscriptions.security.AntiCsrfFilter;
+import com.redhat.swatch.core.security.auth.security.AntiCsrfFilter;
 import org.candlepin.subscriptions.subscription.SubscriptionServiceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

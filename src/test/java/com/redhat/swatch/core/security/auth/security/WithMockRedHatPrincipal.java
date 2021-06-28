@@ -18,20 +18,32 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.util;
+package com.redhat.swatch.core.security.auth.security;
 
-import com.redhat.swatch.core.security.auth.security.auth.ReportingAccessRequired;
-import com.redhat.swatch.core.security.auth.security.auth.SubscriptionWatchAdminOnly;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import org.springframework.security.test.context.support.WithSecurityContext;
 
-public class StubResource {
+/**
+ * Creates a mock Red Hat principal for testing, with account$value and owner$value as account
+ * number and owner ID.
+ *
+ * <p>Defaults to granting ROLE_OPT_IN, but can be overridden.
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@WithSecurityContext(factory = WithMockInsightsUserSecurityContextFactory.class)
+public @interface WithMockRedHatPrincipal {
 
-  @ReportingAccessRequired
-  public void reportingAdminOnlyCall() {
-    // Does nothing
-  }
+  /**
+   * Set account and ownerId to account$value and owner$value respectively.
+   *
+   * @return
+   */
+  String value() default "";
 
-  @SubscriptionWatchAdminOnly
-  public void adminOnlyCall() {
-    // Does nothing
-  }
+  boolean nullifyAccount() default false;
+
+  boolean nullifyOwner() default false;
+
+  String[] roles() default {"ROLE_" + RoleProvider.SWATCH_ADMIN_ROLE};
 }

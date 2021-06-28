@@ -18,20 +18,12 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.util;
+package com.redhat.swatch.core.security.auth.security;
 
-import com.redhat.swatch.core.security.auth.security.auth.ReportingAccessRequired;
-import com.redhat.swatch.core.security.auth.security.auth.SubscriptionWatchAdminOnly;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import org.springframework.security.test.context.support.WithSecurityContext;
 
-public class StubResource {
-
-  @ReportingAccessRequired
-  public void reportingAdminOnlyCall() {
-    // Does nothing
-  }
-
-  @SubscriptionWatchAdminOnly
-  public void adminOnlyCall() {
-    // Does nothing
-  }
-}
+@Retention(RetentionPolicy.RUNTIME)
+@WithSecurityContext(factory = WithInvalidPrincipalSecurityContextFactory.class)
+public @interface WithInvalidPrincipal {}

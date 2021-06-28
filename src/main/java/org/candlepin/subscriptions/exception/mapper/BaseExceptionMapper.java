@@ -20,7 +20,7 @@
  */
 package org.candlepin.subscriptions.exception.mapper;
 
-import static org.candlepin.subscriptions.security.SecurityConfig.SECURITY_STACKTRACE;
+import static com.redhat.swatch.core.security.auth.security.SecurityConfig.SECURITY_STACKTRACE;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

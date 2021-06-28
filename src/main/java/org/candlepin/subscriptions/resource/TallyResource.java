@@ -39,7 +39,7 @@ import org.candlepin.subscriptions.files.ProductProfileRegistry;
 import org.candlepin.subscriptions.json.Measurement;
 import org.candlepin.subscriptions.json.Measurement.Uom;
 import org.candlepin.subscriptions.resteasy.PageLinkCreator;
-import org.candlepin.subscriptions.security.auth.ReportingAccessRequired;
+import com.redhat.swatch.core.security.auth.security.auth.ReportingAccessRequired;
 import org.candlepin.subscriptions.tally.filler.ReportFiller;
 import org.candlepin.subscriptions.tally.filler.ReportFillerFactory;
 import com.redhat.swatch.core.ApplicationClock;

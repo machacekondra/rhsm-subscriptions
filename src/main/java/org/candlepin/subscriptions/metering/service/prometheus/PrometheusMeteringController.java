@@ -36,7 +36,7 @@ import org.candlepin.subscriptions.metering.MeteringException;
 import org.candlepin.subscriptions.prometheus.model.QueryResult;
 import org.candlepin.subscriptions.prometheus.model.QueryResultDataResult;
 import org.candlepin.subscriptions.prometheus.model.StatusType;
-import org.candlepin.subscriptions.security.OptInController;
+import com.redhat.swatch.core.security.auth.security.OptInController;
 import com.redhat.swatch.core.ApplicationClock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

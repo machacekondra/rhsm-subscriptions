@@ -26,7 +26,7 @@ import org.candlepin.subscriptions.metering.service.prometheus.PrometheusMetrics
 import org.candlepin.subscriptions.metering.service.prometheus.PrometheusService;
 import org.candlepin.subscriptions.metering.service.prometheus.config.PrometheusServiceConfiguration;
 import org.candlepin.subscriptions.metering.task.MeteringTasksConfiguration;
-import org.candlepin.subscriptions.security.OptInController;
+import com.redhat.swatch.core.security.auth.security.OptInController;
 import org.candlepin.subscriptions.task.queue.TaskConsumerConfiguration;
 import com.redhat.swatch.core.ApplicationClock;
 import org.springframework.beans.factory.annotation.Qualifier;

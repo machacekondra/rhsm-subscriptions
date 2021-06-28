@@ -18,20 +18,26 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.util;
+package com.redhat.swatch.core.security;
 
-import com.redhat.swatch.core.security.auth.security.auth.ReportingAccessRequired;
-import com.redhat.swatch.core.security.auth.security.auth.SubscriptionWatchAdminOnly;
+import javax.servlet.http.HttpServletRequest;
+import org.candlepin.subscriptions.ApplicationProperties;
+import org.springframework.core.env.ConfigurableEnvironment;
 
-public class StubResource {
+/**
+ * This class includes GET requests in the list of HTTP verbs that must have a matching origin or
+ * referrer. It exists because Jolokia will invoke JMX Beans with GET requests which we want to
+ * protect from CSRF attacks.
+ */
+public class GetVerbIncludingAntiCsrfFilter extends AntiCsrfFilter {
 
-  @ReportingAccessRequired
-  public void reportingAdminOnlyCall() {
-    // Does nothing
+  GetVerbIncludingAntiCsrfFilter(ApplicationProperties props, ConfigurableEnvironment env) {
+    super(props, env);
   }
 
-  @SubscriptionWatchAdminOnly
-  public void adminOnlyCall() {
-    // Does nothing
+  @Override
+  protected boolean requestVerbAllowed(HttpServletRequest request) {
+    String verb = request.getMethod();
+    return !(MODIFYING_VERBS.contains(verb) || "GET".equals(verb));
   }
 }

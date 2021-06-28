@@ -39,7 +39,7 @@ import org.candlepin.subscriptions.marketplace.MarketplaceWorkerConfiguration;
 import org.candlepin.subscriptions.metering.MeteringConfiguration;
 import org.candlepin.subscriptions.resource.ApiConfiguration;
 import org.candlepin.subscriptions.retention.PurgeSnapshotsConfiguration;
-import org.candlepin.subscriptions.security.SecurityConfig;
+import com.redhat.swatch.core.security.auth.security.SecurityConfig;
 import org.candlepin.subscriptions.subscription.SubscriptionServiceConfiguration;
 import org.candlepin.subscriptions.tally.TallyWorkerConfiguration;
 import org.candlepin.subscriptions.tally.job.CaptureHourlySnapshotsConfiguration;

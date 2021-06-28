@@ -22,7 +22,7 @@ package org.candlepin.subscriptions.jmx;
 
 import org.candlepin.subscriptions.db.AccountConfigRepository;
 import org.candlepin.subscriptions.db.model.OrgConfigRepository;
-import org.candlepin.subscriptions.security.OptInController;
+import com.redhat.swatch.core.security.auth.security.OptInController;
 import org.candlepin.subscriptions.user.AccountService;
 import com.redhat.swatch.core.ApplicationClock;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

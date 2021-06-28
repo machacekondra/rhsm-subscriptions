@@ -22,8 +22,8 @@ package org.candlepin.subscriptions.resource;
 
 import javax.ws.rs.BadRequestException;
 import org.candlepin.subscriptions.db.model.config.OptInType;
-import org.candlepin.subscriptions.security.OptInController;
-import org.candlepin.subscriptions.security.auth.SubscriptionWatchAdminOnly;
+import com.redhat.swatch.core.security.auth.security.OptInController;
+import com.redhat.swatch.core.security.auth.security.auth.SubscriptionWatchAdminOnly;
 import org.candlepin.subscriptions.utilization.api.model.OptInConfig;
 import org.candlepin.subscriptions.utilization.api.resources.OptInApi;
 import org.springframework.beans.factory.annotation.Autowired;

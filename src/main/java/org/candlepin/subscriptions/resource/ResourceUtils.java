@@ -20,6 +20,8 @@
  */
 package org.candlepin.subscriptions.resource;
 
+import com.redhat.swatch.core.security.auth.security.RhAssociatePrincipal;
+import com.redhat.swatch.core.security.auth.security.X509Principal;
 import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
@@ -28,8 +30,8 @@ import org.candlepin.subscriptions.db.model.ServiceLevel;
 import org.candlepin.subscriptions.db.model.Usage;
 import com.redhat.swatch.core.exception.CoreErrorCode;
 import org.candlepin.subscriptions.exception.SubscriptionsException;
-import org.candlepin.subscriptions.security.IdentityHeaderAuthenticationFilter;
-import org.candlepin.subscriptions.security.InsightsUserPrincipal;
+import com.redhat.swatch.core.security.auth.security.IdentityHeaderAuthenticationFilter;
+import com.redhat.swatch.core.security.auth.security.InsightsUserPrincipal;
 import org.candlepin.subscriptions.utilization.api.model.ServiceLevelType;
 import org.candlepin.subscriptions.utilization.api.model.UsageType;
 import org.springframework.data.domain.PageRequest;
@@ -53,8 +55,8 @@ public class ResourceUtils {
    * Get the authenicated principal.
    *
    * <p>Typically one of {@link InsightsUserPrincipal}, {@link
-   * org.candlepin.subscriptions.security.RhAssociatePrincipal}, or {@link
-   * org.candlepin.subscriptions.security.X509Principal}
+   * RhAssociatePrincipal}, or {@link
+   * X509Principal}
    *
    * @return the principal object
    */

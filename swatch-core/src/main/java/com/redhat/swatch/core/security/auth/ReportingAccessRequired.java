@@ -18,20 +18,27 @@
  * granted to use or replicate Red Hat trademarks that are incorporated
  * in this software or its documentation.
  */
-package org.candlepin.subscriptions.util;
+package com.redhat.swatch.core.security.auth;
 
-import com.redhat.swatch.core.security.auth.security.auth.ReportingAccessRequired;
-import com.redhat.swatch.core.security.auth.security.auth.SubscriptionWatchAdminOnly;
+import com.redhat.swatch.core.security.RoleProvider;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import org.springframework.security.access.prepost.PreAuthorize;
 
-public class StubResource {
-
-  @ReportingAccessRequired
-  public void reportingAdminOnlyCall() {
-    // Does nothing
-  }
-
-  @SubscriptionWatchAdminOnly
-  public void adminOnlyCall() {
-    // Does nothing
-  }
-}
+/**
+ * Must have the SWATCH_ADMIN_ROLE and account must be whitelisted for reporting.
+ *
+ * @see RoleProvider
+ */
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@PreAuthorize(
+    "hasAnyRole('"
+        + RoleProvider.SWATCH_ADMIN_ROLE
+        + "','"
+        + RoleProvider.SWATCH_REPORT_READER
+        + "') and "
+        + "@reportAccessService.providesAccessTo(authentication)")
+public @interface ReportingAccessRequired {}

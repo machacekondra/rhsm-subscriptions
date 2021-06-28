@@ -23,7 +23,7 @@ package org.candlepin.subscriptions.exception.mapper;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.ext.Provider;
-import org.candlepin.subscriptions.security.RestAccessDeniedHandler;
+import com.redhat.swatch.core.security.auth.security.RestAccessDeniedHandler;
 import org.candlepin.subscriptions.utilization.api.model.Error;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
@@ -42,7 +42,7 @@ import org.springframework.stereotype.Component;
  * by JAX-RS like the rest of our exceptions. It is important to remember, however, that
  * AccessDeniedExceptions can still occur during the regular authentication/authorization process
  * and those will still be handled by our implementation of the AccessDeniedHandler interface,
- * {@link org.candlepin.subscriptions.security.RestAccessDeniedHandler}
+ * {@link RestAccessDeniedHandler}
  *
  * @see <a href="https://stackoverflow.com/a/43452573">https://stackoverflow.com/a/43452573</a>
  */

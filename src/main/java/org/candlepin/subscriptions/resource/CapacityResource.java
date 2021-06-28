@@ -37,7 +37,7 @@ import org.candlepin.subscriptions.db.model.Usage;
 import org.candlepin.subscriptions.files.ProductProfile;
 import org.candlepin.subscriptions.files.ProductProfileRegistry;
 import org.candlepin.subscriptions.resteasy.PageLinkCreator;
-import org.candlepin.subscriptions.security.auth.ReportingAccessRequired;
+import com.redhat.swatch.core.security.auth.security.auth.ReportingAccessRequired;
 import com.redhat.swatch.core.ApplicationClock;
 import org.candlepin.subscriptions.util.SnapshotTimeAdjuster;
 import org.candlepin.subscriptions.utilization.api.model.CapacityReport;
